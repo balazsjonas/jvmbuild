@@ -1,0 +1,15 @@
+from openjdk:8-slim
+
+# based on:
+# http://hg.openjdk.java.net/jdk/jdk/raw-file/tip/doc/building.html#build-tools-requirements
+
+RUN apt-get update && \
+	apt-get install -y --no-install-recommends ca-certificates \
+	mercurial \
+	autoconf automake libtool \
+	make \
+	unzip wget tar \
+	&& rm -rf /var/lib/apt/lists/*
+
+
+RUN mkdir /jvmbuild
