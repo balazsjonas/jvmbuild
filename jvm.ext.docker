@@ -1,0 +1,20 @@
+from jvmgcc
+
+RUN mkdir /jvmbuild/external
+RUN mkdir /jvmbuild/external/packages
+WORKDIR /jvmbuild/external
+
+RUN wget -c http://ftp.de.debian.org/debian/pool/main/a/alsa-lib/libasound2_1.1.3-5_arm64.deb \
+	&& dpkg-deb -x libasound2_1.1.3-5_arm64.deb /jvmbuild/external/packages
+
+RUN wget -c http://ftp.de.debian.org/debian/pool/main/a/alsa-lib/libasound2-dev_1.1.3-5_arm64.deb \
+	&& dpkg-deb -x  libasound2-dev_1.1.3-5_arm64.deb /jvmbuild/external/packages
+
+RUN wget -c https://download.savannah.gnu.org/releases/freetype/freetype-2.9.tar.gz \
+	&& tar xf freetype-2.9.tar.gz
+	
+WORKDIR freetype-2.9
+RUN ./autogen.sh && ./configure && make -j4
+
+# RUN wget -c ftp://sourceware.org/pub/libffi/libffi-3.2.1.tar.gz
+# RUN tar xf libffi-3.2.1.tar.gz && cd libffi-3.2.1

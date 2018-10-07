@@ -1,0 +1,11 @@
+from jvmtools
+
+
+RUN apt-get update && \
+	apt-get install -y --no-install-recommends ca-certificates \
+	gcc-arm-linux-gnueabi \
+	g++-arm-linux-gnueabi \
+	&& rm -rf /var/lib/apt/lists/*
+
+RUN export CC=gcc-arm-linux-gnueabi
+RUN export CXX=g++-arm-linux-gnueabi
