@@ -1,4 +1,4 @@
-from jvmtools
+from bjonas/jvmtools
 
 
 RUN apt-get update && \
