@@ -1,4 +1,4 @@
-from jvmgcc
+from bjonas/jvmgcc
 
 RUN mkdir /jvmbuild/external
 RUN mkdir /jvmbuild/external/packages
